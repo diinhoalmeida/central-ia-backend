@@ -1,0 +1,48 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model IA {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  description  String
+  category     String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  interactions Interaction[]
+
+  @@map("ias")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  firebaseId   String        @unique
+  email        String        @unique
+  name         String?
+  credits      Int           @default(20)
+  createdAt    DateTime      @default(now())
+  interactions Interaction[]
+
+  @@map("users")
+}
+
+model Interaction {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  iaId      Int
+  prompt    String
+  response  String
+  timestamp DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  ia   IA   @relation(fields: [iaId], references: [id])
+
+  @@index([userId], name: "user_interaction_idx")
+  @@index([iaId], name: "ia_interaction_idx")
+  @@map("interactions")
+}
