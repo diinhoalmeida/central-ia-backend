@@ -1,14 +1,17 @@
 # Projeto Backend
 
 ## Descrição
+
 Este é um projeto backend desenvolvido em Node.js, utilizando o framework Express e o Prisma ORM para a comunicação com um banco de dados PostgreSQL. A aplicação foi projetada para gerenciar interações entre usuários e inteligências artificiais (IAs), categorizando e armazenando informações de forma eficiente.
 
 ## Estrutura de Dados
+
 O projeto utiliza o Prisma ORM para gerenciar o banco de dados PostgreSQL. Abaixo estão as principais definições dos modelos utilizados:
 
 ### Modelos do Prisma
 
 - **IA**: Representa as inteligências artificiais cadastradas no sistema.
+
   ```prisma
   model IA {
     id           Int           @id @default(autoincrement())
@@ -24,6 +27,7 @@ O projeto utiliza o Prisma ORM para gerenciar o banco de dados PostgreSQL. Abaix
   ```
 
 - **Category**: Representa as categorias disponíveis.
+
   ```prisma
   model Category {
     id   Int    @id @default(autoincrement())
@@ -32,6 +36,7 @@ O projeto utiliza o Prisma ORM para gerenciar o banco de dados PostgreSQL. Abaix
   ```
 
 - **User**: Representa os usuários da aplicação.
+
   ```prisma
   model User {
     id           Int           @id @default(autoincrement())
@@ -47,6 +52,7 @@ O projeto utiliza o Prisma ORM para gerenciar o banco de dados PostgreSQL. Abaix
   ```
 
 - **Interaction**: Armazena as interações entre usuários e IAs.
+
   ```prisma
   model Interaction {
     id        Int      @id @default(autoincrement())
@@ -66,6 +72,7 @@ O projeto utiliza o Prisma ORM para gerenciar o banco de dados PostgreSQL. Abaix
   ```
 
 ## Dependências
+
 As principais dependências utilizadas neste projeto incluem:
 
 - **@prisma/client**: Cliente Prisma para comunicação com o banco de dados.
@@ -75,9 +82,11 @@ As principais dependências utilizadas neste projeto incluem:
 - **typescript**: Superset do JavaScript que adiciona tipos estáticos.
 
 ## Scripts
+
 Os scripts configurados para rodar a aplicação são:
 
 - **start**: Compila o código TypeScript e executa o servidor.
+
   ```bash
   npm run start
   ```
@@ -88,14 +97,19 @@ Os scripts configurados para rodar a aplicação são:
   ```
 
 ## Configuração
+
 O projeto utiliza variáveis de ambiente para configurar a URL de conexão com o banco de dados PostgreSQL. Certifique-se de criar um arquivo `.env` com as seguintes variáveis:
 
 ```env
-DATABASE_URL=postgresql://usuario:senha@host:porta/banco
-DIRECT_URL=postgresql://usuario:senha@host:porta/banco
+# Connect to Supabase via connection pooling with Supavisor.
+DATABASE_URL="postgresql://postgres.nhakyrtaygnrsticrfoc:Ee@123edilson@aws-0-sa-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Direct connection to the database. Used for migrations.
+DIRECT_URL="postgresql://postgres.nhakyrtaygnrsticrfoc:Ee@123edilson@aws-0-sa-east-1.pooler.supabase.com:5432/postgres"
 ```
 
 ## Instalação
+
 1. Clone este repositório.
 2. Instale as dependências com o comando:
    ```bash
@@ -112,12 +126,14 @@ DIRECT_URL=postgresql://usuario:senha@host:porta/banco
    ```
 
 ## Estrutura de Pastas
+
 - `src/`: Contém o código-fonte da aplicação.
 - `prisma/`: Contém o esquema do Prisma e migrações do banco de dados.
 
 ## Licença
+
 Este projeto é licenciado sob a licença ISC.
 
 ---
-Este README serve como uma visão geral do projeto e guia de configuração para desenvolvedores e contribuidores.
 
+Este README serve como uma visão geral do projeto e guia de configuração para desenvolvedores e contribuidores.
