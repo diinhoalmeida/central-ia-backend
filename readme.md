@@ -122,7 +122,7 @@ DIRECT_URL="postgresql://postgres.nhakyrtaygnrsticrfoc:Ee@123edilson@aws-0-sa-ea
    ```
 5. Inicie a aplicação em modo de desenvolvimento:
    ```bash
-   npm run dev
+   npm start
    ```
 
 ## Estrutura de Pastas
